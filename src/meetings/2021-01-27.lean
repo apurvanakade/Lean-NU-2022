@@ -1,0 +1,1 @@
+-- Next time: let's see how the graph theory theorem about the sum of degrees being even is coded in lean. 
