@@ -12,7 +12,8 @@ variables {V : Type u} (G : simple_graph V)
 
 -- prove that if u is adjacent to v then the set of walks from u to v is non-empty
 
-def simple_graph.walks_of_len (G : simple_graph V) (u v : V) (n : ℕ) := { x : G.walk u v // x.length = n }
+def simple_graph.walks_of_len (G : simple_graph V) (u v : V) (n : ℕ) := 
+  { x : G.walk u v // x.length = n }
 
 theorem adjacent_to_walk {u v : V} (h : G.adj u v) : nonempty (G.walks_of_len u v 1) :=
 begin
@@ -24,19 +25,35 @@ begin
   simp only [simple_graph.walk.length_nil, simple_graph.walk.length_cons],
 end
 
-theorem temp' {u v : V} (w : G.walks_of_len u v 0) : u = v :=
+-- lemma len_of_cons_ge_one {}
+
+theorem eq_of_len_zero {u v : V} (w : G.walks_of_len u v 0) : u = v :=
 begin 
   cases w with w h,
+  -- induction w, refl,
+  -- exfalso,
+
   sorry,
 end 
 
-theorem temp'' {u v : V} (w : G.walks_of_len u v 1) : u ≠ v := 
+theorem non_eq_of_len_one {u v : V} (w : G.walks_of_len u v 1) : u ≠ v := 
 begin 
   cases w with w h,
+  induction w,
+  sorry,
   sorry,
 end
 
-theorem temp {u v : V} (w : G.walks_of_len u v 1) : G.adj u v := 
+theorem exists_walk_of_len {u v : V} (n : ℕ) (w : G.walks_of_len u v (n + 1)) : 
+  ∃ (v' : V) (w' : G.walks_of_len u v' n), (G.adj v' v) := 
+begin 
+  cases w with w h,
+  induction w,
+  sorry,
+  sorry,
+end 
+
+theorem adj_of_len_one {u v : V} (w : G.walks_of_len u v 1) : G.adj u v := 
 begin 
   cases w with w h,
   sorry,
