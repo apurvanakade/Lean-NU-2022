@@ -30,6 +30,12 @@ begin
   sorry,
 end 
 
+theorem temp'' {u v : V} (w : G.walks_of_len u v 1) : u ≠ v := 
+begin 
+  cases w with w h,
+  sorry,
+end
+
 theorem temp {u v : V} (w : G.walks_of_len u v 1) : G.adj u v := 
 begin 
   cases w with w h,
