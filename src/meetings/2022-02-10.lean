@@ -30,17 +30,16 @@ end
 theorem eq_of_len_zero {u v : V} (w : G.walks_of_len u v 0) : u = v :=
 begin 
   cases w with w h,
-  -- induction w, refl,
-  -- exfalso,
-
-  sorry,
+  induction w,
+  { refl },
+  { exfalso,
+    simp only [nat.succ_ne_zero, simple_graph.walk.length_cons] at *,
+    exact h, }
 end 
 
 theorem non_eq_of_len_one {u v : V} (w : G.walks_of_len u v 1) : u ≠ v := 
 begin 
   cases w with w h,
-  induction w,
-  sorry,
   sorry,
 end
 
