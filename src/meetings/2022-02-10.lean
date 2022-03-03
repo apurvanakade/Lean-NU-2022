@@ -2,6 +2,8 @@
 
 import combinatorics.simple_graph.connectivity
 
+open_locale classical
+
 universe u
 variables {V : Type u} (G : simple_graph V)
 
@@ -37,20 +39,31 @@ begin
     exact h, }
 end 
 
+theorem exists_walk_of_len {u v : V} (n : ℕ) (w : G.walk u v) (h : w.length = n + 1) : 
+  ∃ (v' : V) (w' : G.walk u v'), (w'.length = n) ∧ (G.adj v' v) := 
+begin 
+  sorry,
+end 
+
+
+theorem non_eq_of_len_one {u v : V} (w : G.walk u v) (h : w.length = 1) : G.adj u v := 
+begin 
+  
+end
+
+
 theorem non_eq_of_len_one {u v : V} (w : G.walks_of_len u v 1) : u ≠ v := 
 begin 
   cases w with w h,
   sorry,
+  -- induction w,
+  -- {intro h,
+  -- contradiction,},
+  -- simp,
+  -- contradiction,
+
 end
 
-theorem exists_walk_of_len {u v : V} (n : ℕ) (w : G.walks_of_len u v (n + 1)) : 
-  ∃ (v' : V) (w' : G.walks_of_len u v' n), (G.adj v' v) := 
-begin 
-  cases w with w h,
-  induction w,
-  sorry,
-  sorry,
-end 
 
 theorem adj_of_len_one {u v : V} (w : G.walks_of_len u v 1) : G.adj u v := 
 begin 
