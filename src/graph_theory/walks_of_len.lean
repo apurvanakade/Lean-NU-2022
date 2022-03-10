@@ -9,7 +9,11 @@ variables {V : Type u} (G : simple_graph V)
 
 theorem eq_of_len_zero {u v : V} (w : G.walk u v) (h : w.length = 0) : u = v :=
 begin 
-  sorry,
+  cases w with a b,
+  refl,
+  exfalso,
+  rw simple_graph.walk.length_cons at h,
+  exact nat.succ_ne_zero w_p.length h,
 end 
 
 
